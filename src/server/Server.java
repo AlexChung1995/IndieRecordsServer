@@ -33,7 +33,13 @@ public class Server implements Runnable {
 	private Driving db;
 	private int sizeData;
 	
-	public Server(int portNumber, int threadNumber) throws Exception{
+	/**
+	 * Class constructor
+	 * @param portNumber specify which port to bind this server to
+	 * @param threadNumber specify how many threads will handle requests concurrently
+	 * @throws IOException if unable to bind to a server socket
+	 */
+	public Server(int portNumber, int threadNumber) throws IOException{
 		this.port = portNumber;
 		System.out.println("portNumber: " + portNumber);
 		this.fixedThreadPool = Executors.newFixedThreadPool(threadNumber);
@@ -41,6 +47,11 @@ public class Server implements Runnable {
 		this.sizeData = Byte.SIZE;//default encoding 
 	}
 	
+	/**
+	 * Starting function for server
+	 * Calling server.run() will begin accepting remtoe requests until an exception is caught
+	 * Each time a request is received, the thread pool executor assigns it to a thread
+	 */
 	public void run() {
 		while (true) {
 			try {
@@ -67,11 +78,25 @@ public class Server implements Runnable {
 		this.sizeData = size;
 	}
 	
+	/**
+	 * Set the routes this server will function on ie http://yourdomain.com (/yourRoute)
+	 * See the Route documentation for further information on how to define a route
+	 * To define custom logic on this server software you must use server.setRoutes(Route base) before calling server.run()
+	 * @param base base route for your server, typically "/"
+	 */
 	public void setRoutes(Route base) {
 		this.base = base;
 	}
 	
-	public Driving initDB(String url, String user, String password) throws SQLException, ClassNotFoundException {
+	/**
+	 * use this to initiate an SQL database for use with this server
+	 * @param url SQL database link to connect to
+	 * @param user username
+	 * @param password password
+	 * @return Driving, a class for interacting with the database
+	 * @throws SQLException throws if no suitable driver found or other SQL problems encountered (ie no database at the supplied url)
+	 */
+	public Driving initDB(String url, String user, String password) throws SQLException {
 		Driving driver = new Driving(url,user,password);
 		this.db = driver;
 		return driver;
@@ -81,6 +106,10 @@ public class Server implements Runnable {
 		
 	}
 	
+	/**
+	 * Get the database interaction object on this server
+	 * @return database interaction object
+	 */
 	public Driving getDB() {
 		return this.db;
 	}

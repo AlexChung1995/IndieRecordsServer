@@ -2,38 +2,15 @@
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>IndieRecordsServer</groupId>
-  <artifactId>IndieRecordsServer</artifactId>
+  <groupId>indieRecords</groupId>
+  <artifactId>server</artifactId>
   <version>0.1</version>
   <name>IndieRecordsServer</name>
-  <description>Authorization Server for SupremeCashV2</description>
-  <url>https://github.com/AlexChung1995</url>
+  <description>Lightweight server API for custom protocols</description>
+  <url>https://github.com/AlexChung1995/IndieRecordsServer</url>
   <scm>
     <developerConnection>Alex Chung</developerConnection>
   </scm>
-  <repositories>
-    <repository>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </repository>
-  </repositories>
-  <pluginRepositories>
-    <pluginRepository>
-      <releases>
-        <updatePolicy>never</updatePolicy>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-    </pluginRepository>
-  </pluginRepositories>
   <build>
     <sourceDirectory>C:\Users\Anonymous\Projects\Java\IndieRecordsServer\src</sourceDirectory>
     <scriptSourceDirectory>C:\Users\Anonymous\Projects\Java\IndieRecordsServer\src\main\scripts</scriptSourceDirectory>
@@ -51,7 +28,7 @@
       </testResource>
     </testResources>
     <directory>C:\Users\Anonymous\Projects\Java\IndieRecordsServer\target</directory>
-    <finalName>IndieRecordsServer-0.1</finalName>
+    <finalName>IndieRecordsServer</finalName>
     <pluginManagement>
       <plugins>
         <plugin>
